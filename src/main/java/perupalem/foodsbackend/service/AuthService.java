@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +58,7 @@ public class AuthService {
 			}
 			
 		User userData = optionalData.get();
-		if(userData.getPassword_hash() != loginApiData.getPassword()) {
+		if(!userData.getPassword_hash().equals(loginApiData.getPassword())) {
 			throw new Exception("Password is invalid");
 		}
 		
@@ -93,7 +92,7 @@ public class AuthService {
 		
 		String emailbodyString = "hi, This is your reset password.Don't share anyone" + otp;
 		
-		EmailService.
+		emailService.sendPlainMail();
 		
 		return null;
 		
