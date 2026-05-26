@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.validation.constraints.Email;
-import perupalem.foodsbackend.entity.User;
+import perupalem.foodsbackend.entity.UserEntity;
 import perupalem.foodsbackend.pojo.LoginApiData;
 import perupalem.foodsbackend.pojo.ResetPasswordSendOtp;
 import perupalem.foodsbackend.pojo.SignupApiData;
@@ -27,13 +27,13 @@ public class AuthService {
 	
 	public Map<String,Object> Signup(SignupApiData signupApiData) throws Exception {
 		
-	Optional<User> optionalData = 	authRepository.findByEmail(signupApiData.getEmail());	
+	Optional<UserEntity> optionalData = 	authRepository.findByEmail(signupApiData.getEmail());	
 		
 		if(optionalData.isPresent()) {
 			throw new Exception("User Already Existe with thie email");
 		}
 		
-		User user = new User();
+		UserEntity user = new UserEntity();
 		user.setFull_name(signupApiData.getName());
 		user.setEmail(signupApiData.getEmail());
 		user.setMobile_number(signupApiData.getMobile());
@@ -51,13 +51,13 @@ public class AuthService {
 	
 	public Map<String, Object> Login(LoginApiData loginApiData) throws Exception {
 		
-		Optional<User> optionalData = authRepository.findByEmail(loginApiData.getEmail());	
+		Optional<UserEntity> optionalData = authRepository.findByEmail(loginApiData.getEmail());	
 		
 			if(optionalData.isEmpty()) {
 				throw new Exception("User not found with given email");
 			}
 			
-		User userData = optionalData.get();
+		UserEntity userData = optionalData.get();
 		if(!userData.getPassword_hash().equals(loginApiData.getPassword())) {
 			throw new Exception("Password is invalid");
 		}
@@ -81,12 +81,12 @@ public class AuthService {
 	
 	public Object resetPassword( ResetPasswordSendOtp resetPasswordSendOtp) throws Exception {
 		
-		Optional<User> dbOptionalData =		authRepository.findByEmail(resetPasswordSendOtp.getEmail());
+		Optional<UserEntity> dbOptionalData =		authRepository.findByEmail(resetPasswordSendOtp.getEmail());
 		if(dbOptionalData.isEmpty()) {
 			throw new Exception("Email is not registred with us ");
 		}
 		
-		User user = dbOptionalData.get();
+		UserEntity user = dbOptionalData.get();
 		
 		int otp = AuthUtility.generateOtp();
 		

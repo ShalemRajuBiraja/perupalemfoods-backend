@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import perupalem.foodsbackend.entity.Cart;
+import perupalem.foodsbackend.entity.CartEntity;
 import perupalem.foodsbackend.payload.ApiResponse;
 import perupalem.foodsbackend.pojo.CartApiData;
 import perupalem.foodsbackend.service.CartService;
@@ -41,11 +41,11 @@ public class CartController {
 	
 	
 	@GetMapping("/getCartItems/{userId}")
-	public ResponseEntity<ApiResponse<List<Cart>>> handleGetCartItems( @PathVariable int userId) {
+	public ResponseEntity<ApiResponse<List<CartEntity>>> handleGetCartItems( @PathVariable int userId) {
 
-	    List<Cart> cartItems = cartService.getCartItemsService(userId);
+	    List<CartEntity> cartItems = cartService.getCartItemsService(userId);
 
-	    ApiResponse<List<Cart>> apiResponse = new ApiResponse<>( true,"Cart items retrieved successfully",cartItems);
+	    ApiResponse<List<CartEntity>> apiResponse = new ApiResponse<>( true,"Cart items retrieved successfully",cartItems);
 
 	    return ResponseEntity
 	            .status(HttpStatus.OK)

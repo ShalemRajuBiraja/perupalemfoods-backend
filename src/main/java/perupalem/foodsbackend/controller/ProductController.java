@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import perupalem.foodsbackend.entity.Product;
+import perupalem.foodsbackend.entity.ProductEntity;
 import perupalem.foodsbackend.service.GetProductsService;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -21,9 +21,9 @@ public class ProductController {
 	
 	
 	@GetMapping("/getProducts")
-	public List<Product> getProducts() {
+	public List<ProductEntity> getProducts() {
 		
-		List<Product> productsList = getProductsService.getAllProducts();
+		List<ProductEntity> productsList = getProductsService.getAllProducts();
 		return productsList;
 	}
 

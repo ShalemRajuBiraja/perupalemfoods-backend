@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 //✅ Add these imports
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import perupalem.foodsbackend.entity.User;
+import perupalem.foodsbackend.entity.UserEntity;
 
 
 @Service
@@ -34,7 +34,7 @@ public class JwtService {
 	}
 	
 	//generating jwt token by using user details and secret key;
-	public String generateJwtToken(User userData) {
+	public String generateJwtToken(UserEntity userData) {
 		
 		Date tokenGeneratedTime = new Date();
 		
