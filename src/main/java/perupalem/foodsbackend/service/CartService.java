@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import perupalem.foodsbackend.entity.Cart;
+import perupalem.foodsbackend.entity.CartEntity;
 import perupalem.foodsbackend.pojo.CartApiData;
 import perupalem.foodsbackend.repository.CartRepository;
 
@@ -30,13 +30,13 @@ public class CartService {
 	
 	public Object addToCartService(CartApiData cartApiData) throws Exception {
 		
-		Optional<Cart> responseOptional = cartRepository.findByUserIdAndProductId(cartApiData.getUserId(), cartApiData.getProductId());	
+		Optional<CartEntity> responseOptional = cartRepository.findByUserIdAndProductId(cartApiData.getUserId(), cartApiData.getProductId());	
 		
 		if(responseOptional.isPresent()) {
 			throw new Exception("Product already exists in cart");
 		}
 		
-		Cart cart = new Cart();
+		CartEntity cart = new CartEntity();
 		cart.setUserId(cartApiData.getUserId());
 		cart.setProductId(cartApiData.getProductId());
 		cart.setProductName(cartApiData.getProductName());
@@ -53,7 +53,7 @@ public class CartService {
 	 * 3. Return the CartApiData object containing the cart items for the user
 	 * 
 	 */
-	public List<Cart> getCartItemsService(int userId) {
+	public List<CartEntity> getCartItemsService(int userId) {
 		
 		return  cartRepository.findByUserId(userId);
 	}

@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import perupalem.foodsbackend.entity.User;
+import perupalem.foodsbackend.entity.UserEntity;
 
 
-public interface AuthRepository extends JpaRepository<User, Integer> {
+public interface AuthRepository extends JpaRepository<UserEntity, Integer> {
 
-	Optional<User> findByEmail(String email);
+	Optional<UserEntity> findByEmail(String email);
 }

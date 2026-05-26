@@ -13,6 +13,10 @@ import jakarta.validation.constraints.Positive;
 @SuppressWarnings("unused")
 public class OrderData {
 	
+	
+	@NotNull(message = "User ID is required")
+	private int userId;
+	
 	@NotNull(message = "Product ID is required")
 	private int productId;
 

@@ -1,9 +1,11 @@
 package perupalem.foodsbackend.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import perupalem.foodsbackend.entity.Order;
+import perupalem.foodsbackend.entity.OrderEntity;
 import perupalem.foodsbackend.pojo.OrderData;
 import perupalem.foodsbackend.repository.OrderRepository;
 
@@ -15,16 +17,20 @@ public class OrderService {
 	
 	public Object placeOrder(OrderData orderData) {
 		
-		Order order = new Order();
+		OrderEntity order = new OrderEntity();
+		order.setUserId(orderData.getUserId());
 		order.setProductId(orderData.getProductId());
 		order.setProductName(orderData.getProductName());
 		order.setProductPrice(orderData.getPrice());
 		order.setProductQuantity(orderData.getQuantity());
 	
 	return orderRepository.save(order);
-		
-		
-		
-	}
+}
+	
+	public List<OrderEntity> getOrdersService(int userId) {
 
+        return orderRepository.findByUserId(userId);
+}
+	
+	
 }

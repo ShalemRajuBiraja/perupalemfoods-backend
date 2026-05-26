@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import perupalem.foodsbackend.entity.User;
+import perupalem.foodsbackend.entity.UserEntity;
 import perupalem.foodsbackend.payload.ApiResponse;
 import perupalem.foodsbackend.pojo.LoginApiData;
 import perupalem.foodsbackend.pojo.ResetPasswordSendOtp;

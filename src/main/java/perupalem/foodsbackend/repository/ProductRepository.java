@@ -3,9 +3,9 @@ package perupalem.foodsbackend.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import perupalem.foodsbackend.entity.Product;
+import perupalem.foodsbackend.entity.ProductEntity;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
 
 }

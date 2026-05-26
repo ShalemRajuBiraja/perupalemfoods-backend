@@ -14,28 +14,32 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "carts")
+@Data
+public class CartEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Integer orderId;
+    @Column(name = "cart_id")
+    private Integer cartId;
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @Column(name = "product_id")
-    private int productId;
-
+    private Integer productId;
+    
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "product_price")
-    private BigDecimal productPrice;
-
-    @Column(name = "product_quantity")
-    private Integer productQuantity;
+    @Column(name = "price")
+    private BigDecimal price;
     
+    @Column(name= "image_url")
+    private String imageUrl;
+
+  
     @CreationTimestamp
     @Column(name = "created_on")
     private LocalDateTime createdOn;
