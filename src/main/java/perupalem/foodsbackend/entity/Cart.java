@@ -35,9 +35,11 @@ public class Cart {
 
     @Column(name = "price")
     private BigDecimal price;
+    
+    @Column(name= "image_url")
+    private String imageUrl;
 
   
-
     @CreationTimestamp
     @Column(name = "created_on")
     private LocalDateTime createdOn;

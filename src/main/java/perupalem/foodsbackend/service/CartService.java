@@ -1,6 +1,8 @@
 package perupalem.foodsbackend.service;
 
 
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +41,21 @@ public class CartService {
 		cart.setProductId(cartApiData.getProductId());
 		cart.setProductName(cartApiData.getProductName());
 		cart.setPrice(cartApiData.getPrice());
+		cart.setImageUrl(cartApiData.getImageUrl());
 		
 		return cartRepository.save(cart);
+		}
+	
+	
+	/*
+	 * 1. Retrieve all cart items for the user from the database using the cartRepository
+	 * 2. Map the retrieved Cart entities to a CartApiData object, which contains a list of cart items with their details (productId, productName, price)
+	 * 3. Return the CartApiData object containing the cart items for the user
+	 * 
+	 */
+	public List<Cart> getCartItemsService(int userId) {
 		
-		
+		return  cartRepository.findByUserId(userId);
 	}
 	
 

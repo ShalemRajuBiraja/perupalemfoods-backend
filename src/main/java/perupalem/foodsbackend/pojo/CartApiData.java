@@ -15,4 +15,6 @@ public class CartApiData {
 	
 	private BigDecimal price;
 	
+	private String imageUrl;  // with getter and setter
+	
 }
