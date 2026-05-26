@@ -1,0 +1,1 @@
+alter table carts add column image_url varchar(255) after price;

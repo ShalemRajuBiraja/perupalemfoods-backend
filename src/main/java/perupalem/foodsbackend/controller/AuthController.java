@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +16,12 @@ import jakarta.validation.Valid;
 import perupalem.foodsbackend.entity.User;
 import perupalem.foodsbackend.payload.ApiResponse;
 import perupalem.foodsbackend.pojo.LoginApiData;
+import perupalem.foodsbackend.pojo.ResetPasswordSendOtp;
 import perupalem.foodsbackend.pojo.SignupApiData;
 import perupalem.foodsbackend.service.AuthService;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
 @SuppressWarnings("unused")
 @RestController
 public class AuthController {
@@ -46,8 +51,19 @@ public class AuthController {
 	
 		return ResponseEntity.status(HttpStatus.OK).body(datApiResponse);
 	}
+	/*1. receive data
+	 * 2. 
+	 * 
+	 * 
+	 * 
+	 */
 	
-	
+	@PostMapping("auth/reset-password")
+	public Object resetPassword(@Valid @RequestBody ResetPasswordSendOtp resetPasswordSendOtp) {
+		
+		
+		return null;
+	}
 	
 	//final bracket
 }
