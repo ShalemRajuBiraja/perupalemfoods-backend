@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import perupalem.foodsbackend.entity.OrderEntity;
 import perupalem.foodsbackend.pojo.OrderData;
 import perupalem.foodsbackend.repository.OrderRepository;
@@ -24,13 +25,21 @@ public class OrderService {
 		order.setProductPrice(orderData.getPrice());
 		order.setProductQuantity(orderData.getQuantity());
 	
-	return orderRepository.save(order);
-}
+			return orderRepository.save(order);
+	}
+	
 	
 	public List<OrderEntity> getOrdersService(int userId) {
 
         return orderRepository.findByUserId(userId);
-}
+	}
+	
+	
+	@Transactional
+	public void deleteOrder(int orderId) {
+		
+		orderRepository.deleteById(orderId);
+	}
 	
 	
 }
